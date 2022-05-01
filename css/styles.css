@@ -1,0 +1,126 @@
+:root {
+  font-size: 62.5%;
+  /* 
+    custom properties are great for maintenance purposes 
+    you can name your custom property anything you want - 
+    it must start with "--" 
+  */
+  --antique-brass: #bd5b26;
+  --desert-sand: #ddbea9;
+  --champagne-pink: #ffe8d6;
+  --artichoke: #a5a58d;
+  --dark-artichoke: #6b705c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: sans-serif;
+  background-color: var(--champagne-pink);
+  color: var(--dark-artichoke);
+}
+
+h2 {
+  color: var(--antique-brass);
+  background-color: var(--desert-sand);
+  padding: 1rem;
+  margin: 1rem;
+}
+
+/* EXAMPLE */
+
+.container {
+  display: grid;
+  min-height: 500px;
+  border: 5px solid var(--desert-sand);
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+
+.item {
+  border: 5px solid var(--desert-sand);
+  background-color: rgb(182, 96, 65);
+  color: white;
+  text-align: center;
+
+  /* How to center content */
+  display: grid;
+  align-items: center;
+}
+
+/* Expanding cells */
+
+.two {
+  background-color: var(--dark-artichoke);
+  /* grid-column: start / end or span */
+  grid-column: 2 / 4;
+  grid-column: 2 / span 2;
+}
+
+.six {
+  background-color: var(--dark-artichoke);
+  grid-column: 3 / span 2;
+  /* grid-row: start / end or span */
+  grid-row: 2 / 4;
+}
+
+/* GRID LAYOUT */
+
+.container2 {
+  color: black;
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 0.2fr 1fr;
+  grid-template-rows: 0.2fr 1fr 0.1fr;
+
+  /* we are distributing the grid-areas */
+  /* we are creating our layout */
+  grid-template-areas:
+    "head head" /* this value comes from  grid-area name */
+    "nav content"
+    "foot foot";
+}
+
+.header {
+  /* 
+    The value of the grid-area has to match the one specified in 
+    grid-template-areas (above)
+    */
+  grid-area: head;
+  background-color: #b45050;
+}
+
+.sidebar {
+  grid-area: nav;
+  background-color: var(--artichoke);
+}
+
+main {
+  grid-area: content;
+  background-color: #4e4646;
+}
+
+footer {
+  grid-area: foot;
+  background-color: var(--antique-brass);
+}
+
+.flexitem {
+  width: 25rem;
+  padding: 10rem 0;
+  border: 2px solid var(--dark-artichoke);
+}
+
+/* GRID and FLEX TOGETHER */
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
